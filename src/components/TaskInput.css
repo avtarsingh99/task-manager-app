@@ -1,0 +1,57 @@
+.task-input {
+  border: 1px solid lightgray;
+  padding: 20px;
+  max-width: 300px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 16px;
+}
+
+.task-title,
+.task-desc,
+.task-priority {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 8px;
+}
+
+.task-title input,
+.task-priority select {
+  width: 276px;
+  padding: 8px;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+}
+
+.task-desc input {
+  width: 248px;
+  min-height: 48px;
+  padding: 8%;
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+}
+
+.add-task-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: green;
+  color: white;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s;
+}
+
+.add-task-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  opacity: 0.5;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: not-allowed;
+}

@@ -1,0 +1,96 @@
+.task-item {
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+    background: rgb(239, 239, 239);   /* ← one background, not two */
+  }
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-item.completed {
+  background: linear-gradient(135deg, lightgreen 0%, green 100%);
+  border: 1px solid green;
+}
+
+.priority-badge {
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
+}
+
+.line{
+    width: 100%;
+    background: lightgrey;
+    height: 1px;
+    border-radius: 12px;
+}
+
+.task-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+}
+
+.task-actions{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.task-actions button{
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+
+.task-content textarea {
+    width: 95%;
+    min-height: 48px;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.task-content input {
+    min-width: 320px;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.task-content select {
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+}
+
+.save-btn {
+    background: green;
+    color: white;
+}
+
+.save-btn:hover{
+    font-weight: bold;
+}

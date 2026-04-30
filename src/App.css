@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
+  line-height: 1.6;
+}
+
+.App {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 12px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.app-main {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+
+.filter-info {
   display: flex;
   flex-direction: column;
+}
+
+.task-summary {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, lightgreen 0%, green 100%);
+  border-radius: 16px;
+  font-weight: 600;
+}
+
+.task-summary span {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+}
+
+.task-summary button{
+  padding: 16px;
+  color: lightcoral;
+  background-color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f8f0fa10;
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+}
+
+.search-section {
+  flex: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 2px solid #e1e8ed;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+  background: #fff;
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.filter-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.filter-buttons button.active {
+  background: #667eea;
   color: white;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filter-buttons button:hover:not(.active) {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
 }

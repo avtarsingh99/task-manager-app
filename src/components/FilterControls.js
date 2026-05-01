@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTaskContext } from '../context/TaskContext';
 
 export default function FilterControls() {
 
   const { state, setFilter, setSearch } = useTaskContext();
+  const [searchValue, setSearchValue] = useState('');
+
+  function handleSearch(e) {
+    setSearchValue(e.target.value);
+    setSearch(e.target.value);
+  }
+
+  function handleClear() {
+    setSearchValue('');
+    setSearch('');
+  }
 
   return (
     <div className='filter-controls'>
       <div className='search-section'>
-      <label>Search tasks here:</label>
+      <div className='search-wrapper'>
         <input
           className='search-input'
-          onChange={e => setSearch(e.target.value)}
+          value={searchValue}
+          onChange={handleSearch}
           placeholder='Search tasks....' />
+          {searchValue && (
+            <button className='search-clear' onClick={handleClear}>X</button>
+          )}
+      </div>
       </div>
       <div className='filter-section'>
         <label>Filters: </label>

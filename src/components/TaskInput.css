@@ -1,5 +1,6 @@
 .task-input {
-  border: 1px solid lightgray;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
   max-width: 300px;
   border-radius: 16px;
@@ -20,9 +21,9 @@
 
 .task-title input,
 .task-priority select {
-  width: 276px;
+  width: 248px;
   padding: 8px;
-  border: 1px solid lightgrey;
+  border: none;
   border-radius: 8px;
 }
 
@@ -30,7 +31,7 @@
   width: 248px;
   min-height: 48px;
   padding: 8%;
-  border: 1px solid lightgrey;
+  border: none;
   border-radius: 8px;
 }
 

@@ -19,7 +19,7 @@ export const initialState = {
             createdAt: new Date().toISOString()
         }
     ],
-    filter: 'All',
+    filter: 'all',
     searchTerm: '',
     history: [] 
 };

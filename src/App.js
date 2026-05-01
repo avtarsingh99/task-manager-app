@@ -18,8 +18,8 @@ function App() {
       <div className='filter-info'>
       <TaskSummary />
       <FilterControls />
-      </div>
       <TaskList />
+      </div>
       </main>
     </div>
   );

@@ -7,19 +7,21 @@ import FilterControls from './components/FilterControls';
 function App() {
   return (
     <div className="App">
-    <header className='app-header'>
-      <h1>Task Manager App</h1>
-      <p>Built with React Context API & useReducer</p>
+      <header className='app-header'>
+        <h1>Task Manager App</h1>
+        <p>Built with React Context API & useReducer</p>
       </header>
       <main className='app-main'>
-      <div className='sidebar'>
-      <TaskInput />
-      </div>
-      <div className='filter-info'>
-      <TaskSummary />
-      <FilterControls />
-      <TaskList />
-      </div>
+        <div className='sidebar'>
+          <TaskInput />
+        </div>
+        <div className='filter-info'>
+          <div className='summary-and-filters'>
+            <TaskSummary />
+            <FilterControls />
+          </div>
+          <TaskList />
+        </div>
       </main>
     </div>
   );

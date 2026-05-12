@@ -1,5 +1,5 @@
 
-// Starting date when app first loads
+// Starting data when app first loads
 export const initialState = {
     tasks: [
         {
@@ -20,26 +20,25 @@ export const initialState = {
         }
     ],
     filter: 'all',
-    searchTerm: '',
-    history: [] 
+    history: []
 };
 
 export const ACTIONS = {
-    ADD_TASK: "ADD_TASK",
-    DELETE_TASK: "DELETE_TASK",
-    TOGGLE_TASK: "TOGGLE_TASK",
-    EDIT_TASK: "EDIT_TASK",
-    SET_FILTER: "SET_FILTER",
-    SET_SEARCH: "SET_SEARCH",
-    UNDO_ACTION: "UNDO_ACTION"
+    ADD_TASK: "add-task",
+    DELETE_TASK: "delete-task",
+    TOGGLE_TASK: "toggle-task",
+    EDIT_TASK: "edit-task",
+    SET_FILTER: "set-filter",
+    CLEAR_ALL_TASKS: 'clear-all-tasks',
+    UNDO_ACTION: "undo-action"
 };
 
 export const taskReducer = (state, action) => {
 
     // save current state to history before making any changes
-    const saveToHistory =  (currentState) => ({
-        ...currentState,
-        history: [currentState, ...currentState.history.slice(0,9)]
+    const saveToHistory = (oldState, newState) => ({
+        ...newState,
+        history: [{...oldState, history: []}, ...oldState.history.slice(0,9)]
     });
 
 
@@ -54,30 +53,36 @@ export const taskReducer = (state, action) => {
                 createdAt: new Date().toISOString()
             };
 
-            return saveToHistory({
+            return saveToHistory(state, {
                 ...state,
                 tasks: [...state.tasks, newTask]
             });
 
-        case ACTIONS.DELETE_TASK: 
-            return saveToHistory({
+        case ACTIONS.DELETE_TASK:
+            return saveToHistory(state, {
                 ...state,
                 tasks: state.tasks.filter(task => task.id !== action.payload)
             });
-            
+
+        case ACTIONS.CLEAR_ALL_TASKS:
+            return saveToHistory(state, {
+                ...state,
+                tasks: []
+            });
+
         case ACTIONS.TOGGLE_TASK:
-            return saveToHistory({
+            return saveToHistory(state, {
                 ...state,
                 tasks: state.tasks.map(task =>
-                    task.id === action.payload? {...task, completed: !task.completed}:task
+                    task.id === action.payload ? { ...task, completed: !task.completed } : task
                 )
             });
 
         case ACTIONS.EDIT_TASK:
-            return saveToHistory({
+            return saveToHistory(state, {
                 ...state,
                 tasks: state.tasks.map(task =>
-                    task.id === action.payload.id? {...task, ...action.payload.updates}: task
+                    task.id === action.payload.id ? { ...task, ...action.payload.updates } : task
                 )
             });
 
@@ -87,14 +92,8 @@ export const taskReducer = (state, action) => {
                 filter: action.payload
             };
 
-        case ACTIONS.SET_SEARCH:
-            return {
-                ...state,
-                searchTerm: action.payload
-            };
-
         case ACTIONS.UNDO_ACTION:
-            if(state.history.length > 0){
+            if (state.history.length > 0) {
                 const [previousState, ...restHistory] = state.history;
                 return {
                     ...previousState,
@@ -103,9 +102,9 @@ export const taskReducer = (state, action) => {
             }
             return state;
 
-    
+
         default:
-            throw new Error (`Unhandled action type: ${action.type}`);
+            throw new Error(`Unhandled action type: ${action.type}`);
     }
 
 }; 

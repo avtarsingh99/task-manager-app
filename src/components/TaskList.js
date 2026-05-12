@@ -1,9 +1,10 @@
-import { useTaskContext } from "../context/TaskContext";
+import { TaskContext } from "../context/TaskContext";
 import TaskItem from "./TaskItem";
+import { useContext } from "react";
 
 export default function TaskList() {
 
-    const { state } = useTaskContext();
+    const { state } = useContext(TaskContext);
 
     const filtered = state.tasks.filter(task => {
 
@@ -12,12 +13,7 @@ export default function TaskList() {
         (state.filter === 'completed' && task.completed) || 
         (state.filter === 'pending' && !task.completed);
 
-        const matchesSearch = 
-        state.searchTerm === '' ||
-        task.title.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
-        task.description.toLowerCase().includes(state.searchTerm.toLowerCase());
-
-        return matchesFilter && matchesSearch;
+        return matchesFilter;
     });
 
     if (filtered.length === 0)
